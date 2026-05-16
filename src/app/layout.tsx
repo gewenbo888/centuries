@@ -61,6 +61,7 @@ export const metadata: Metadata = {
     languages: { en: "/", "zh-CN": "/", "x-default": "/" },
   },
   openGraph: {
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "The Centuries · 世纪志 — A 3,000-Year Atlas of Civilization" }],
     title: "The Centuries · 世纪志",
     description:
       "Three thousand years of civilization, one century at a time. From David's Kingdom to the Information Age. Bilingual EN · 中文.",
@@ -71,6 +72,7 @@ export const metadata: Metadata = {
     alternateLocale: ["zh_CN"],
   },
   twitter: {
+    images: ["/twitter-image.png"],
     card: "summary_large_image",
     title: "The Centuries · 世纪志",
     description:
