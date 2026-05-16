@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-feature-settings: "ss01" on, "kern" on, "liga" on, "calt" on;
+}
+
+.zh body, html.zh {
+  font-family: var(--font-zh), var(--font-display), serif;
+}
+html.zh .font-display { font-family: var(--font-zh), var(--font-display), serif !important; }
+html.zh .font-sans { font-family: var(--font-zh), var(--font-sans), sans-serif !important; }
+html.zh .tracking-tight { letter-spacing: -0.005em; }
+
+/* Aged paper grain */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.88 0 0 0 0 0.78 0 0 0 0 0.62 0 0 0 0.06 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  z-index: 60;
+}
+
+/* Vertical vignette */
+.vignette::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
+  z-index: 59;
+}
+
+.number { font-feature-settings: "tnum" on, "lnum" on; }
+
+.hairline { border-top: 1px solid rgba(232, 220, 204, 0.14); }
+
+.cell-hover { transition: background 0.22s ease, transform 0.3s ease; }
+.cell-hover:hover { background: rgba(232, 220, 204, 0.04); }
+
+/* Drop cap */
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 4.4em;
+  line-height: 0.85;
+  float: left;
+  padding-right: 0.12em;
+  padding-top: 0.05em;
+  color: var(--c-gold, #c9a96e);
+}
+html.zh .dropcap::first-letter { font-size: 1em; float: none; padding: 0; color: inherit; }
+
+/* Roman numeral utility */
+.roman { letter-spacing: 0.05em; }
+
+/* Subtle scroll-cued indicators */
+@keyframes drift-y {
+  0%,100% { transform: translateY(0); opacity: .6; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+.drift-y { animation: drift-y 2.4s ease-in-out infinite; }
